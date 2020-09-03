@@ -1,0 +1,7 @@
+Instructor: [0:00] Let's go ahead and handle this error in a graceful way. With promises, you do that with catch, so we can catch the error. For right now, just pass it down to the listener. I'll hit Save. Now, we caught the error and sent that down and it's logging the error out. With this error, I can write an operator to map it to something else.
+
+[0:24] I'll write mapError as the name of our operator. Let us call our mapping function transform, and broadcaster, then listener. I can return the broadcaster, push the value through. If the value is an instance of error, then, I can, into the listener, transform that value. Otherwise, just do the default behavior.
+
+[0:55] It's only going to do this if that value shows up as an error. Let's go ahead and use this around our broadcaster. We'll wrap this and say mapError. We'll take the error, and then just return something else. For now, I'll just say "Whoopsie," hit Save here. You can see, we get a Whoopsie out of here. I could do something like doing the error.message, hit Save, "The user aborted the request."
+
+[1:24] If I wanted to target this login name right here, I could just map this to an object. That object is our profile, and it has a login on it of error.message. That would look like this, an object with a login. It has the message on it. If this didn't error, meaning we don't cancel, the object comes through fine. If it does error, then we can just map it to something else.

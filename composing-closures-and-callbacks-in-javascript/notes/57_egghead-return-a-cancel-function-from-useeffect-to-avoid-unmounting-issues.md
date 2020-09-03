@@ -1,0 +1,9 @@
+Instructor: [0:00] When you create a component, we'll call this timer and that component would use broadcaster, and we'll pass in a createInterval of 500 ms. Then, we'll just call this backTimer and return a div with the timer value in there. I hit Save to reformat and I can drop my timer in here. You'll see it start to count up.
+
+[0:31] We have to cover this scenario where this timer would be unmounted. If I do a useState to essentially track whether the timer is mounted or unmounted, so we'll start with true. We'll call this showTimer and setShowTimer. Add a button called toggleTimer and this button onClick is going to ignore the event and just setShowTimer to the opposite of showTimer, so just acting as a toggle.
+
+[1:11] Then we can wrap our timer with a showTimer check to conditionally render it. With this setup, this will start counting. I can toggle my timer and you'll see this error that it's trying to perform a React state update on an unmounted component. That's happening in useBroadcaster right here. This useEffect is still trying to run and call this, even though the component is unmounted.
+
+[1:41] The solution lines up with the cancellation we've been doing all along, where if I define a cancel based on the broadcaster, and from useEffect, the body of this function, I return a function that calls cancel, you'll see this function will get called. I'll just type in unmounted. You'll see this function gets called when I click this button. That was unmounted.
+
+[2:06] If I click again, the timer will start over. If I click again, it's unmounted. React components have the same cleanup principle for asynchronous code as we do inside of the functions we've written. Since all of our stuff is captured inside of useEffect, we make sure to return a function that can cancel anything that's happening.

@@ -1,0 +1,3 @@
+Instructor: [0:00] Moving on to the next demo, I'm just going to check out to before the React refactor and I realized making this demo, once I type in STAR, you'll see in the Network tab, we're back to making two requests, which means that I made the classic blunder of using, when I created my waitFor, using a create timeout without handling the done.
+
+[0:26] I'm going to call this value timeoutValue. If timeoutValue is done, just guard against it. When I search again, type in STAR, we're back to a single request. Again, this is the scenario to watch out for once you're using things that can't be done inside of other operators. We never want waitFor to be done because of this. We make it a done from outside of it, but it has no concept of an internal done.
